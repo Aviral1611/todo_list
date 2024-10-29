@@ -7,7 +7,8 @@ const Todo = () => {
 const inputRef = useRef();
 
 
-const [todoList, setTodoList] = useState([]);
+const [todoList, setTodoList] = useState(localStorage.getItem('todos')?
+JSON.parse(localStorage.getItem('todos')): []);
 
 const add = () => {
       const inputText = inputRef.current.value.trim();
@@ -47,7 +48,7 @@ const toggle = (id) => {
 }
 
 useEffect(() => {
-  console.log(todoList)
+  localStorage.setItem("todos",JSON.stringify(todoList));
 },
 [todoList])
 
